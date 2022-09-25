@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import {
   filterImageFromURL,
@@ -33,7 +33,7 @@ import {
   /**************************************************************************** */
 
   /* http://localhost:8082/filteredimage?image_url=https://cdn.britannica.com/09/75509-050-86D8CBBF/Albert-Einstein.jpg?w=400&h=300&c=crop */
-  app.get('/filteredimage', async (req, res) => {
+  app.get('/filteredimage', async (req: Request, res: Response) => {
     if (req.query && !req.query.image_url) {
       return res.status(400).send({
         message: 'try GET /filteredimage?image_url={{}}',
